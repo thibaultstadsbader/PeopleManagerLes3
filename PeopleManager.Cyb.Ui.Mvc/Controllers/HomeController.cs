@@ -15,6 +15,12 @@ namespace PeopleManager.Cyb.Ui.Mvc.Controllers
 
         public IActionResult Index()
         {
+            var people = GetPeople();
+            return View(people);
+        }
+
+        public IActionResult About()
+        {
             return View();
         }
 
@@ -27,6 +33,17 @@ namespace PeopleManager.Cyb.Ui.Mvc.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private IList<Person> GetPeople()
+        {
+            return new List<Person>
+            {
+                new Person {FirstName = "Bavo", LastName = "Ketels", Email = "bavo.ketels@gmail.com"},
+                new Person {FirstName = "Bavo2", LastName = "Ketels2", Email = "bavo.ketels2@gmail.com"},
+                new Person {FirstName = "Bavo3", LastName = "Ketels3", Email = "bavo.ketels3@gmail.com"},
+                new Person {FirstName = "Bavo4", LastName = "Ketels4", Email = "bavo.ketels4@gmail.com"},
+            };
         }
     }
 }

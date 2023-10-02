@@ -1,8 +1,15 @@
-﻿@{
+﻿@model IList<Person>
+@{
     ViewData["Title"] = "Home Page";
+    var firstPerson = Model.FirstOrDefault();
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if(firstPerson is not null)
+{
+    <partial name="PersonPartial" model="firstPerson"/>
+}
+
+@foreach (var person in Model)
+{
+    <partial name="PersonPartial" model="person"/>
+}
